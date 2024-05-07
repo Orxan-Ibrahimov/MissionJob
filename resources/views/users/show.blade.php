@@ -1,4 +1,4 @@
-@if(Auth::user() -> active_role == 'administrator')
+@if(Auth::user() -> active_role === 'administrator')
 <x-manager-layout>
     <div class="col-8">
         <div class="card p-4">
@@ -11,7 +11,19 @@
                 <h3 class="card-text my-4">Created At: <span class="mx-3 text-success">{{ $user -> created_at}}</span></h3>
                 <h3 class="card-text my-4">Email Verified At: <span class="mx-3 p-2 rounded bg-danger text-warning">{{ $user -> email_verified_at}}</span></h3>
                 <h3 class="card-text my-4">Updated At: <span class="mx-3 text-danger">{{ $user -> updated_at? $user -> updated_at : 'Not updated'}}</span></h3>
-                <a href="/users" class="btn btn-light btn-primary py-2"> <i class="mdi mdi-keyboard-return"></i></a>
+                <div class="d-flex justify-content-between align-items-center">
+                @if($user -> id !== Auth::user() -> id && !empty($rest_roles))
+                <div class="d-flex">
+                    <select class="form-control bg-info text-white text-left w-auto rounded-pill">
+                        @foreach($rest_roles as $role)
+                        <option value="{{$role -> id}}" class="bg-info text-white"> {{ $role -> name }} </option>
+                        @endforeach
+                    </select>
+                    <a href="/users/{{$user -> id}}/addRole/{{$role -> name}}" class="btn btn-outline-info py-2 mx-4"> Add Role</a>
+                </div>
+                @endif
+                <a href="/users" class="btn btn-light py-2 my-4"> <i class="mdi mdi-keyboard-return"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -21,10 +33,10 @@
             <h1 class="text-center"> {{ $user -> first_name}}'s Roles </h1>
             <div class="card-body">
                 @foreach($user -> roles as $role)
-                @if($role -> name === 'student')
+                @if($role -> name === 'student' || Auth::user() -> id === $user -> id)
                 <a class="btn btn-outline-info d-block disabled rounded-pill p-4 my-4">{{ $role -> name }}</a>
                 @else
-                <a href="/users/{{$user -> id}}/{{$role -> name}}" class="btn btn-outline-info d-block rounded-pill p-4 my-4">{{ $role -> name }}</a>
+                <a href="/users/{{$user -> id}}/deleteRole/{{$role -> name}}" class="btn btn-outline-info d-block rounded-pill p-4 my-4">{{ $role -> name }}</a>
                 @endif
                 @endforeach
             </div>
