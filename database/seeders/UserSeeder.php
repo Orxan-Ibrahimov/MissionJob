@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'updated_at' => null,
             'password' => Hash::make('anaranar'),
-        ])->assignRole(['manager', 'teacher', 'mentor']);
+        ])->assignRole(['manager', 'teacher', 'mentor', 'student']);
 
         User::create([
             'first_name' => 'Abbas',
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'updated_at' => null,
             'password' => Hash::make('abbas123'),
-        ])->assignRole(['head-teacher', 'teacher', 'manager']);
+        ])->assignRole(['head-teacher', 'teacher', 'manager', 'student']);
 
         User::create([
             'first_name' => 'Nazile',
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'updated_at' => null,
             'password' => Hash::make('hermosaa'),
-        ])->assignRole('teacher', 'head-teacher');
+        ])->assignRole('teacher', 'head-teacher', 'student');
 
         User::create([
             'first_name' => 'Cavid',
@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'updated_at' => null,
             'password' => Hash::make('JohnyBravo'),
-        ])->assignRole('mentor');
+        ])->assignRole('mentor', 'student');
 
         User::create([
             'first_name' => 'Peter',
@@ -85,6 +85,6 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'updated_at' => null,
             'password' => Hash::make('kriptonyte'),
-        ])->assignRole('supervisor');
+        ])->assignRole('supervisor', 'student');
     }
 }

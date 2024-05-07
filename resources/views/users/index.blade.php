@@ -2,7 +2,7 @@
 <x-manager-layout>
     <div class="card">
         <div class="card-body">
-        <h2 class="card-title mb-0">Users Table</h2>
+            <h2 class="card-title mb-0">Users Table</h2>
             <table class="table table-hover table-striped table-dark">
                 <thead>
                     <tr>
@@ -23,7 +23,10 @@
                         <td>{{$user -> active_role}}</td>
                         <td>{{$user -> register_id}}</td>
                         <td>
-                            <a href="/users/{{$user -> id}}" class="btn btn-outline-info m-2"><i class="mdi mdi-eye"></i></a>                           
+                        <a href="/users/{{$user -> id}}" class="btn btn-outline-info m-2"><i class="mdi mdi-eye"></i></a>  
+
+                            @if(!($user -> id === Auth::user() -> id) )
+                            @endif
                         </td>
                     </tr>
                     @endforeach

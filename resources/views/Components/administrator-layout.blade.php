@@ -80,22 +80,13 @@
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
 
-                  <img src="{{ URL::asset('layouts/admin/images/faces/face10.jpg') }}" alt="image" class="img-sm profile-pic">
+                  <!-- <img src="{{ URL::asset('layouts/admin/images/faces/face10.jpg') }}" alt="image" class="img-sm profile-pic"> -->
                 </div>
                 <div class="preview-item-content flex-grow py-2">
                   <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
                   <p class="font-weight-light small-text"> The meeting is cancelled </p>
                 </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <img src="{{ URL::asset('layouts/admin/images/faces/face12.jpg') }}" alt="image" class="img-sm profile-pic">
-                </div>
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
-                  <p class="font-weight-light small-text"> The meeting is cancelled </p>
-                </div>
-              </a>
+              </a>              
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
                   <img src="{{ URL::asset('layouts/admin/images/faces/face1.jpg') }}" alt="image" class="img-sm profile-pic">
@@ -270,8 +261,8 @@
         <div class="content-wrapper">
 
           <div class="row page-title-header">
-            {{ $slot }}
-          </div>
+
+        </div>
 
         </div>
         <footer class="footer">

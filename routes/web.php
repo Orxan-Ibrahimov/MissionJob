@@ -35,6 +35,11 @@ Route::patch('/switch_role', function () {
     ]);
     return redirect('home');
 });
+
+Route::get('/users/{user}/{role}', function (User $user, $role) {
+    $user -> removeRole($role);   
+    return redirect('users/'.$user -> id);
+});
 // Route::get('/home', function ($request, $role) {
 //     return view('home');
 // });
