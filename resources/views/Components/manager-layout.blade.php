@@ -43,7 +43,7 @@
                             </div>
                             <div class="profile-name">
                                 <h5 class="mb-0 font-weight-normal">{{Auth::user() -> first_name}} {{Auth::user() -> last_name}}</h5>
-                                <span>{{Auth::user() -> nickname}}</span>
+                                <span>{{Auth::user() -> register_id}}</span>
                             </div>
                         </div>
                         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -103,7 +103,15 @@
                         <span class="menu-title">Roles</span>
                     </a>
                 </li>
-                @endrole
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="/users">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-security"></i>
+                        </span>
+                        <span class="menu-title">Users</span>
+                    </a>
+                </li>
+                @endif
 
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="pages/tables/basic-table.html">
@@ -362,7 +370,8 @@
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                                 <h6 class="p-3 mb-0">Roles</h6>
                                 <div class="dropdown-divider"></div>
-                                @foreach(Auth::user() -> roles as $role)
+                                @foreach(Auth::user() -> roles as $role )
+                                @if(Auth::user() -> active_role !== $role -> name)
                                 <a class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
@@ -377,6 +386,7 @@
                                     </form>
                                 </a>
                                 <div class="dropdown-divider"></div>
+                                @endif
                                 @endforeach
                             </div>
                         </li>

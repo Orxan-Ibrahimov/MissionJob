@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Orxan',
             'last_name' => 'Ibrahimov',
-            'nickname' => 'Developer',
-             'active_role' => 'administrator',
+            'register_id' => rand(100000, 999999),
+            'active_role' => 'administrator',
             'email' => 'orxan@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('Orxan@620')
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Anar',
             'last_name' => 'Memmedov',
-            'nickname' => 'Programmer',
+            'register_id' => rand(100000, 999999),
             'active_role' => 'manager',
             'email' => 'anar@gmail.com',
             'email_verified_at' => now(),
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Abbas',
             'last_name' => 'Abasov',
-            'nickname' => 'King',
+            'register_id' => rand(100000, 999999),            
             'active_role' => 'head-teacher',
             'email' => 'abbas@gmail.com',
             'email_verified_at' => now(),
@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Nazile',
             'last_name' => 'Memmedova',
-            'nickname' => 'Hermosa',
+            'register_id' => rand(100000, 999999),            
             'email' => 'nazile@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('hermosaa'),
@@ -56,7 +56,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Cavid',
             'last_name' => 'Hesenov',
-            'nickname' => 'Johny',
+            'register_id' => rand(100000, 999999),            
             'email' => 'cavid@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('JohnyBravo'),
@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Peter',
             'last_name' => 'Parker',
-            'nickname' => 'Spider',
+            'register_id' => rand(100000, 999999),            
             'email' => 'peter@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('spiderboy'),
@@ -74,7 +74,7 @@ class UserSeeder extends Seeder
         User::create([
             'first_name' => 'Clark',
             'last_name' => 'Kent',
-            'nickname' => 'superman',
+            'register_id' => rand(100000, 999999),            
             'email' => 'clark@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('kriptonyte'),

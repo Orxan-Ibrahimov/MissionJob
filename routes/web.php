@@ -3,6 +3,7 @@
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,7 @@ Route::post('/login', [SessionController::class, 'store']);
 Route::delete('/logout', [SessionController::class, 'destroy']);
 
 Route::resource('roles', RoleController::class);
+Route::resource('users', UserController::class);
 
 // Route::get('/roles', [RoleController::class, 'index']);
 // Route::get('/roles/create', [RoleController::class, 'create']);
