@@ -13,9 +13,9 @@ class UserController extends Controller
         return view('users/index', ['users' => $users]);
     }
 
-    public function create()
+    public function show(User $user)
     {
-        return view('users/create');
+        return view('users/show', ['user' => $user]);
     }
 
  

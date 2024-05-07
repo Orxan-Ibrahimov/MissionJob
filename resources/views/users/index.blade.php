@@ -9,6 +9,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Surname</th>
+                        <th scope="col">Active Role</th>
                         <th scope="col">Register ID</th>
                         <th scope="col">Operations</th>
                     </tr>
@@ -19,6 +20,7 @@
                         <th scope="row">{{$user -> id}}</th>
                         <td>{{$user -> first_name}}</td>
                         <td>{{$user -> last_name}}</td>
+                        <td>{{$user -> active_role}}</td>
                         <td>{{$user -> register_id}}</td>
                         <td>
                             <a href="/users/{{$user -> id}}" class="btn btn-outline-info m-2"><i class="mdi mdi-eye"></i></a>                           

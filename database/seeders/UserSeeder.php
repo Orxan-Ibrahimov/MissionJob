@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'active_role' => 'administrator',
             'email' => 'orxan@gmail.com',
             'email_verified_at' => now(),
+            'updated_at' => null,
             'password' => Hash::make('Orxan@620')
         ])->assignRole(['administrator', 'manager', 'head-teacher', 'teacher', 'supervisor', 'student', 'mentor']);
 
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
             'active_role' => 'manager',
             'email' => 'anar@gmail.com',
             'email_verified_at' => now(),
+            'updated_at' => null,
             'password' => Hash::make('anaranar'),
         ])->assignRole(['manager', 'teacher', 'mentor']);
 
@@ -41,6 +43,7 @@ class UserSeeder extends Seeder
             'active_role' => 'head-teacher',
             'email' => 'abbas@gmail.com',
             'email_verified_at' => now(),
+            'updated_at' => null,
             'password' => Hash::make('abbas123'),
         ])->assignRole(['head-teacher', 'teacher', 'manager']);
 
@@ -50,6 +53,7 @@ class UserSeeder extends Seeder
             'register_id' => rand(100000, 999999),            
             'email' => 'nazile@gmail.com',
             'email_verified_at' => now(),
+            'updated_at' => null,
             'password' => Hash::make('hermosaa'),
         ])->assignRole('teacher', 'head-teacher');
 
@@ -59,6 +63,7 @@ class UserSeeder extends Seeder
             'register_id' => rand(100000, 999999),            
             'email' => 'cavid@gmail.com',
             'email_verified_at' => now(),
+            'updated_at' => null,
             'password' => Hash::make('JohnyBravo'),
         ])->assignRole('mentor');
 
@@ -68,6 +73,7 @@ class UserSeeder extends Seeder
             'register_id' => rand(100000, 999999),            
             'email' => 'peter@gmail.com',
             'email_verified_at' => now(),
+            'updated_at' => null,
             'password' => Hash::make('spiderboy'),
         ])->assignRole('student');
 
@@ -77,6 +83,7 @@ class UserSeeder extends Seeder
             'register_id' => rand(100000, 999999),            
             'email' => 'clark@gmail.com',
             'email_verified_at' => now(),
+            'updated_at' => null,
             'password' => Hash::make('kriptonyte'),
         ])->assignRole('supervisor');
     }

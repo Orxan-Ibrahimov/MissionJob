@@ -106,7 +106,7 @@
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="/users">
                         <span class="menu-icon">
-                            <i class="mdi mdi-security"></i>
+                            <i class="mdi mdi-account-multiple"></i>
                         </span>
                         <span class="menu-title">Users</span>
                     </a>
