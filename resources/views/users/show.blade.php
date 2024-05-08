@@ -11,19 +11,26 @@
                 <h3 class="card-text my-4">Created At: <span class="mx-3 text-success">{{ $user -> created_at}}</span></h3>
                 <h3 class="card-text my-4">Email Verified At: <span class="mx-3 p-2 rounded bg-danger text-warning">{{ $user -> email_verified_at}}</span></h3>
                 <h3 class="card-text my-4">Updated At: <span class="mx-3 text-danger">{{ $user -> updated_at? $user -> updated_at : 'Not updated'}}</span></h3>
+
                 <div class="d-flex justify-content-between align-items-center">
-                @if($user -> id !== Auth::user() -> id && !empty($rest_roles))
-                <div class="d-flex">
-                    <select class="form-control bg-info text-white text-left w-auto rounded-pill">
-                        @foreach($rest_roles as $role)
-                        <option value="{{$role -> id}}" class="bg-info text-white"> {{ $role -> name }} </option>
-                        @endforeach
-                    </select>
-                    <a href="/users/{{$user -> id}}/addRole/{{$role -> name}}" class="btn btn-outline-info py-2 mx-4"> Add Role</a>
+                    @if($user -> id !== Auth::user() -> id && !empty($rest_roles))
+                    <form method="post" action="/users/{{ $user -> id }}/addRole" class="d-flex align-items-center">
+                        @csrf
+                        <input type="hidden" name="user" value="{{$user -> id}}" />
+                        <select name="role" class="form-control bg-info text-white text-left w-auto rounded-pill">
+                            <option value="" class="bg-info text-white"> Choose </option>
+                            @foreach($rest_roles as $role)
+                            <option value="{{$role -> name}}" class="bg-info text-white"> {{ $role -> name }} </option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-outline-info py-2 mx-4"> Add Role</button>
+                    </form>
+                    @endif
+                    <a href="/users" class="btn btn-light py-2 my-4"> <i class="mdi mdi-keyboard-return"></i></a>
                 </div>
-                @endif
-                <a href="/users" class="btn btn-light py-2 my-4"> <i class="mdi mdi-keyboard-return"></i></a>
-                </div>
+                @error('role')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
         </div>
     </div>

@@ -7,8 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Ramsey\Uuid\Type\NumberInterface;
-use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,25 +34,23 @@ Route::patch('/switch_role', function () {
         'active_role' => request('role')
     ]);
     return redirect('home');
-});
+})->middleware('auth');
 
 Route::get('/users/{user}/deleteRole/{role}', function (User $user, $role) {
     $user->removeRole($role);
     return redirect('users/' . $user->id);
-});
+})->middleware('auth');
 
-Route::get('/users/{user}/addRole/{role}', function (User $user, $role) {
-   
-    $user->assignRole($role);
+Route::post('/users/{user}/addRole', function (User $user) {
+    // dd($user);
+    request() -> validate([
+        'role' => ['required'],
+    ]);
+    
+    
+    $user->assignRole(request('role'));
     return redirect('users/' . $user->id);
-});
-
-
-
-
-// Route::get('/home', function ($request, $role) {
-//     return view('home');
-// });
+})->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
@@ -63,12 +59,5 @@ Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
 Route::delete('/logout', [SessionController::class, 'destroy']);
 
-Route::resource('roles', RoleController::class);
-Route::resource('users', UserController::class);
-
-// Route::get('/roles', [RoleController::class, 'index']);
-// Route::get('/roles/create', [RoleController::class, 'create']);
-// Route::post('/roles/create', [RoleController::class, 'store']);
-// Route::get('/roles/edit/{role}', [RoleController::class, 'edit']);
-// Route::patch('/roles/{role}', [RoleController::class, 'update']);
-// Route::delete('/roles/{role}', [RoleController::class, 'destroy']);
+Route::resource('roles', RoleController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
