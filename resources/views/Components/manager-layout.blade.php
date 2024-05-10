@@ -6,16 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
-    <!-- plugins:css -->
-  
-
     @vite(
-        'resources/css/style.css'
-        );
+    'resources/css/style.css'
+    );
     <!-- End layout styles -->
 </head>
 
 <body>
+
+
     <div class="container-scroller">
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -269,31 +268,32 @@
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                                 <h6 class="p-3 mb-0">Profile</h6>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-dark rounded-circle">
-                                            <i class="mdi mdi-settings text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject mb-1">Settings</p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
+                                <a href="/users/{{Auth::user() -> id }}/edit" class="dropdown-item preview-item">
                                     <div class="preview-thumbnail">
                                         <div class="preview-icon bg-dark rounded-circle">
                                             <i class="mdi mdi-logout text-danger"></i>
                                         </div>
                                     </div>
                                     <div class="preview-item-content">
-                                        <!-- <p class="preview-subject mb-1">Log out</p> -->
-                                        <form method="post" action="/logout">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" style="background-color: transparent; color:white; border:none;" class="preview-subject mb-1">Log out</button>
-                                        </form>
+                                        <p style="background-color: transparent; color:white; border:none;" class="preview-subject mb-1">Edit Profile</p>
                                     </div>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item preview-item">
+                                    <form method="post" action="/logout" class="w-100">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" style="background-color: transparent; color:white; border:none;" class="preview-subject d-flex align-items-center  mb-1">
+                                            <div class="preview-thumbnail">
+                                                <div class="preview-icon bg-dark rounded-circle">
+                                                    <i class="mdi mdi-logout text-danger"></i>
+                                                </div>
+                                            </div>
+                                            <div class="preview-item-content">
+                                                <p class="mb-0">Log out</p>
+                                            </div>
+                                        </button>
+                                    </form>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <p class="p-3 mb-0 text-center">Advanced settings</p>
@@ -358,6 +358,7 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="{{ URL::asset('layouts/manager/vendors/js/vendor.bundle.base.js') }}"></script>
@@ -370,15 +371,15 @@
     <script src="{{ URL::asset('layouts/manager/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
+    
     <script src="{{ URL::asset('layouts/manager/js/off-canvas.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/hoverable-collapse.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/misc.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/settings.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/todolist.js') }}"></script>
     <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="{{ URL::asset('layouts/manager/js/dashboard.js') }}"></script>
-    <!-- End custom js for this page -->
+    <!-- Custom js for this page -->    
+    <script src="{{ URL::asset('layouts/manager/js/dashboard.js') }}"></script>  
 </body>
 
 </html>
