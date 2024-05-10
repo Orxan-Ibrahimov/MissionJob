@@ -7,21 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Corona Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ URL::asset('layouts/manager/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('layouts/manager/vendors/css/vendor.bundle.base.css') }}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{ URL::asset('layouts/manager/vendors/jvectormap/jquery-jvectormap.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('layouts/manager/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('layouts/manager/vendors/owl-carousel-2/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('layouts/manager/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ URL::asset('layouts/manager/css/style.css') }}">
+  
+
+    @vite(
+        'resources/css/style.css'
+        );
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ URL::asset('layouts/manager/images/favicon.png') }}" />
 </head>
 
 <body>
@@ -37,8 +28,7 @@
                     <div class="profile-desc">
                         <div class="profile-pic">
                             <div class="count-indicator">
-
-                                <img class="img-xs rounded-circle" src="{{ URL::asset('layouts/manager/images/faces/face15.jpg') }}" alt="">
+                                <img class="img-xs rounded-circle" src="{{ Auth::user() -> profile}}" alt="">
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
@@ -271,7 +261,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                                 <div class="navbar-profile">
-                                    <img class="img-xs rounded-circle" src="{{ URL::asset('layouts/manager/images/faces/face15.jpg') }}" alt="">
+                                    <img class="img-xs rounded-circle" src="{{ Auth::user() -> profile }}" alt="">
                                     <p class="mb-0 d-none d-sm-block navbar-profile-name">{{Auth::user() -> first_name . ' '. Auth::user() -> last_name}}</p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>

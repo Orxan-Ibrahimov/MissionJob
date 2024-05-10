@@ -1,8 +1,11 @@
 @if(Auth::user() -> active_role === 'administrator')
 <x-manager-layout>
-    <div class="col-8">
+    <div class="{{ $user -> active_role != 'administrator'? 'col-8' :'col-12' }}">
         <div class="card p-4">
-            <h1 class="text-center"> {{ $user -> first_name. ' '. $user -> last_name }} </h1>
+            <div class="card-header d-flex flex-column align-items-center">
+                <img src="{{ $user -> profile }}" alt="profile" class="rounded-circle my-4" style="width: 150px; height:150px;" />
+                <h1 class="text-center"> {{ $user -> first_name. ' '. $user -> last_name }} </h1>
+            </div>
             <div class="card-body">
                 <h3 class="card-text my-4">ID: <span class="mx-3 text-info">{{ $user -> id }}</span></h3>
                 <h3 class="card-text my-4">Email: <span class="mx-3 text-warning">{{ $user -> email}}</span></h3>
@@ -35,6 +38,7 @@
         </div>
     </div>
 
+    @if($user -> active_role != 'administrator')
     <div class="col-4">
         <div class="card p-4">
             <h1 class="text-center"> {{ $user -> first_name}}'s Roles </h1>
@@ -49,5 +53,7 @@
             </div>
         </div>
     </div>
+    @endif
+
 </x-manager-layout>
 @endif

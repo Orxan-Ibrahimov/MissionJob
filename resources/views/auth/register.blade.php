@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
@@ -31,9 +32,15 @@
                 </div>
 
                 <div>
-                    <label for="nickname" class="block text-sm font-medium leading-6 text-gray-900">Nickname</label>
-                    <input id="nickname" name="nickname" type="text" autocomplete="nickname" class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    @error('nickname')
+                    <span>
+                        <label for="man" class="d-inline-block text-sm font-medium leading-6 text-gray-900">Man</label>
+                        <input id="man" name="gender" value="man" type="radio" class="d-inline-block w-auto rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </span>
+                    <span class="mx-4">
+                        <label for="woman" class="d-inline-block text-sm font-medium leading-6 text-gray-900">Woman</label>
+                        <input id="woman" name="gender" value="woman" type="radio" class="d-inline-block w-auto rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </span>
+                    @error('gender')
                     <p style="width: 80%;" class="text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
