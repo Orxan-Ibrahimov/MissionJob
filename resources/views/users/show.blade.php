@@ -14,6 +14,12 @@
                 <h3 class="card-text my-4">Created At: <span class="mx-3 text-success">{{ $user -> created_at}}</span></h3>
                 <h3 class="card-text my-4">Email Verified At: <span class="mx-3 p-2 rounded bg-danger text-warning">{{ $user -> email_verified_at}}</span></h3>
                 <h3 class="card-text my-4">Updated At: <span class="mx-3 text-danger">{{ $user -> updated_at? $user -> updated_at : 'Not updated'}}</span></h3>
+                <h3 class="card-text my-4">About You:</h3>
+                <div>
+                {!! html_entity_decode($user -> about_you) !!}
+                
+                
+                </div>
 
                 <div class="d-flex justify-content-between align-items-center">
                     @if($user -> id !== Auth::user() -> id && !empty($rest_roles))
@@ -56,4 +62,5 @@
     @endif
 
 </x-manager-layout>
+
 @endif

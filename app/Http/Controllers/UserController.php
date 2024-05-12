@@ -82,13 +82,16 @@ class UserController extends Controller
 
         foreach ($images as $key => $image) {
             $data = base64_decode(explode(',', explode(';', $image->getAttribute('src'))[1])[1]);
-            $image_name = Paths::filePaths(["\uploads\image"], [time() . $key . '.png']);
-            $image_name = $image_name[0];
-            file_put_contents(public_path() . $image_name, $data);
+            $image_name = Paths::filePaths([public_path()], [Paths::filePaths([Paths::filePaths(['uploads'],['image'])[0]], [time() . $key . '.png'])[0]])[0];
+            // dd($image_name);
+            file_put_contents($image_name, $data);
             $image->removeAttribute('src');
+            $image_name = str_replace(public_path(),request()->getSchemeAndHttpHost(),$image_name);
+            $image_name = str_replace('\\','/',$image_name);
             $image->setAttribute('src', $image_name);
+
         }
-        $description = $dom->saveHTML();
+        $description = $dom -> saveHTML();
         $valid_user['about_you'] = $description;
 
         $user->update($valid_user);

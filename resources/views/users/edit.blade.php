@@ -74,7 +74,7 @@
                     <label for="about_you">
                         <h1>About You</h1>
                     </label>
-                    <textarea id="tiny" name="about_you">Hello Summernote</textarea>
+                    <textarea id="tiny" name="about_you">{{ $user -> about_you }}</textarea>
                 </div>
 
 
