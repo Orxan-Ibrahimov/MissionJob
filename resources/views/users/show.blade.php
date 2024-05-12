@@ -16,7 +16,7 @@
                 <h3 class="card-text my-4">Updated At: <span class="mx-3 text-danger">{{ $user -> updated_at? $user -> updated_at : 'Not updated'}}</span></h3>
                 <h3 class="card-text my-4">About You:</h3>
                 <div>
-                {!! html_entity_decode($user -> about_you) !!}
+                {!! html_entity_decode($user -> about_you) !!}php 
                 
                 
                 </div>
