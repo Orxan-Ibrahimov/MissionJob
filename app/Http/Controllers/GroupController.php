@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -11,7 +12,7 @@ class GroupController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {       
+    {
         return view('groups.index', ['groups' => Group::all()]);
     }
 
@@ -20,15 +21,25 @@ class GroupController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        request()->validate([
+            'name' => ['required']
+        ]);
+
+        Group::create([
+            'name' => request('name'),
+            'head_teacher_id' => Auth::user()->id
+        ]);
+
+
+        return redirect('groups');
     }
 
     /**

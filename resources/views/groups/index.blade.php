@@ -2,7 +2,11 @@
 <x-manager-layout>
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title mb-0">Groups Table</h2>
+            <div class="d-flex justify-content-between align-items-center m-2">
+                <h2 class="card-title mb-0">Groups Table</h2>
+                <a href="/groups/create" class="d-block btn btn-outline-success mx-5">Create</a>
+            </div>
+
             <table class="table table-hover table-striped table-dark">
                 <thead>
                     <tr>
