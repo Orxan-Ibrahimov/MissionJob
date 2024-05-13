@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::policy(User::class,GroupPolicy::class);
         Gate::policy(Group::class, GroupPolicy::class);
-        Gate::policy(User::class, LessonPolicy::class);
+        // Gate::policy(Group::class, LessonPolicy::class);
         Gate::policy(Lesson::class, LessonPolicy::class);
     }
 }

@@ -13,13 +13,27 @@
                     </div>
                 </h3>
             </div>
+            <div class="card-footer">
+                @can('edit', $group)
+                <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning">Edit</a>
+                @endcan
+            </div>
+        </div>
+
+        <div class="card p-4">
             <div class="card-header">
-            @can('edit', $group)           
-                <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning">Edit</a>            
-            @endcan
-            @can('create', Auth::user())           
-            <a href="/lessons/create?group={{  $group -> id }}" class="btn btn-success">Create</a>
-            @endcan
+                <h1 class="text-left"> Lessons </h1>
+            </div>
+            <div class="card-body">
+                @foreach($group -> lessons as $lesson)
+                <a href="/lessons/{{$lesson -> id}}" class="btn btn-info p-4">{{ $lesson -> name}}</a>
+                @endforeach
+            </div>
+            <div class="card-footer">
+               
+                @can('edit', $group)
+                <a href="/lessons/create?group={{  $group -> id }}" class="btn btn-success">Create Lesson</a>
+                @endcan
             </div>
         </div>
     </div>
