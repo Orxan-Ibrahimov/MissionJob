@@ -14,4 +14,8 @@ class Group extends Model
     public function head_teacher(){
         return $this-> belongsTo(User::class);
     }
+
+    public function lessons(){
+        return $this->hasMany(Lesson::class);
+    }
 }

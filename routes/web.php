@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SessionController;
@@ -63,3 +64,4 @@ Route::delete('/logout', [SessionController::class, 'destroy']);
 Route::resource('roles', RoleController::class)->middleware('auth');
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('groups', GroupController::class);
+Route::resource('lessons', LessonController::class);

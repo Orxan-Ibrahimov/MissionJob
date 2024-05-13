@@ -109,6 +109,14 @@
                         <span class="menu-title">Groups</span>
                     </a>
                 </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="/lessons">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-content-paste"></i>
+                        </span>
+                        <span class="menu-title">Lessons</span>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- partial -->

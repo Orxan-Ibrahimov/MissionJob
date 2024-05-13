@@ -13,11 +13,14 @@
                     </div>
                 </h3>
             </div>
-            @can('edit', $group)
             <div class="card-header">
-                <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning">Edit</a>
-            </div>
+            @can('edit', $group)           
+                <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning">Edit</a>            
             @endcan
+            @can('create', Auth::user())           
+            <a href="/lessons/create?group={{  $group -> id }}" class="btn btn-success">Create</a>
+            @endcan
+            </div>
         </div>
     </div>
 </x-manager-layout>

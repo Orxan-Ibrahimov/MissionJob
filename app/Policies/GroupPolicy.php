@@ -20,14 +20,8 @@ class GroupPolicy
      */
     public function edit(User $user, Group $group): Response
     {
-        return $group->head_teacher->id === $user->id
+        return ($group->head_teacher->id === $user->id && $user->active_role === 'head-teacher')
             ? Response::allow()
             : Response::deny("Sorry! You can't edit this group.");
-    }
-    public function update(User $user, Group $group): Response
-    {
-        return $group->user->is($user)
-            ? Response::allow()
-            : Response::deny("Sorry! You can't' update this group.");
     }
 }
