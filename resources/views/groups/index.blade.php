@@ -1,10 +1,11 @@
-@if(Auth::user() -> active_role == 'administrator')
 <x-manager-layout>
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center m-2">
                 <h2 class="card-title mb-0">Groups Table</h2>
+                @can('create',Auth::user())
                 <a href="/groups/create" class="d-block btn btn-outline-success mx-5">Create</a>
+                @endcan
             </div>
 
             <table class="table table-hover table-striped table-dark">
@@ -31,7 +32,4 @@
             </table>
         </div>
     </div>
-
-
 </x-manager-layout>
-@endif

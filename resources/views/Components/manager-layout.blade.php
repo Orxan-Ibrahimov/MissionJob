@@ -100,6 +100,7 @@
                         <span class="menu-title">Users</span>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="/groups">
                         <span class="menu-icon">
@@ -108,8 +109,6 @@
                         <span class="menu-title">Groups</span>
                     </a>
                 </li>
-                @endif
-
             </ul>
         </nav>
         <!-- partial -->
@@ -379,15 +378,15 @@
     <script src="{{ URL::asset('layouts/manager/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    
+
     <script src="{{ URL::asset('layouts/manager/js/off-canvas.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/hoverable-collapse.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/misc.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/settings.js') }}"></script>
     <script src="{{ URL::asset('layouts/manager/js/todolist.js') }}"></script>
     <!-- endinject -->
-    <!-- Custom js for this page -->    
-    <script src="{{ URL::asset('layouts/manager/js/dashboard.js') }}"></script>  
+    <!-- Custom js for this page -->
+    <script src="{{ URL::asset('layouts/manager/js/dashboard.js') }}"></script>
 </body>
 
 </html>

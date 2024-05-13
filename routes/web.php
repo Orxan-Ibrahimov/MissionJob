@@ -62,4 +62,4 @@ Route::delete('/logout', [SessionController::class, 'destroy']);
 
 Route::resource('roles', RoleController::class)->middleware('auth');
 Route::resource('users', UserController::class)->middleware('auth');
-Route::resource('groups', GroupController::class)->middleware('auth');
+Route::resource('groups', GroupController::class);

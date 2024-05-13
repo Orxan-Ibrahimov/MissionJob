@@ -1,4 +1,3 @@
-@if(Auth::user() -> active_role === 'administrator')
 <x-manager-layout>
     <div class="col-12">
         <div class="card p-4">
@@ -14,8 +13,11 @@
                     </div>
                 </h3>
             </div>
+            @can('edit', $group)
+            <div class="card-header">
+                <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning">Edit</a>
+            </div>
+            @endcan
         </div>
     </div>
 </x-manager-layout>
-
-@endif

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class GroupController extends Controller
 {
@@ -21,6 +23,9 @@ class GroupController extends Controller
      */
     public function create()
     {
+        $response = Gate::inspect('create', Auth::user());
+        if (!$response->allowed()) abort(403, $response->message());
+
         return view('groups.create');
     }
 
@@ -53,17 +58,28 @@ class GroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Group $group)
     {
-        //
+        $response = Gate::inspect('edit', $group);
+        if (!$response->allowed()) abort(403, $response->message());
+
+        return view('groups.edit', ['group' => $group]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Group $group)
     {
-        //
+        $response = Gate::inspect('edit', $group);
+        if (!$response->allowed()) abort(403, $response->message());
+
+        $valid_group = request()->validate([
+            'name' => ['required'],
+        ]);
+
+        $group->update($valid_group);
+        return redirect('groups/' . $group->id);
     }
 
     /**
