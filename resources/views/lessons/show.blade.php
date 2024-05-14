@@ -1,6 +1,6 @@
 <x-manager-layout>
     <div class="col-12">
-        <div class="card p-4">
+        <div class="card p-4 my-3">
             <div class="card-header d-flex flex-column align-items-center">
                 <h1 class="text-center"> {{ $lesson -> name}} </h1>
             </div>
@@ -9,22 +9,25 @@
                 <h3 class="card-text my-4">Group: <span class="mx-3 text-info">{{ $lesson -> group -> name }}</span></h3>
             </div>
 
-            @can('edit', $lesson)
+            @can('edit', $lesson-> group)
             <div class="card-header">
                 <a href="/lessons/{{ $lesson -> id }}/edit" class="btn btn-warning">Edit</a>
             </div>
             @endcan
         </div>
 
-        <div class="card p-4">
+        <div class="card p-4 my-4">
             <div class="card-header">
                 <h1 class="text-center"> {{ $lesson -> name }}'s Lectures </h1>
             </div>
 
+
             <div class="card-body d-flex">
+                @can('edit', $lesson -> group)
                 <a href="/lectures/create?lesson={{$lesson -> id}}" class="btn btn-light mx-2">
-            <img src="{{URL::asset('uploads/lecture/create.png')}}" width="75" height="75" alt="create" />
-            </a>
+                    <img src="{{URL::asset('uploads/lecture/create.png')}}" width="75" height="75" alt="create" />
+                </a>
+                @endcan
                 @if(count($lesson -> lectures))
                 @foreach($lesson -> lectures as $lecture)
                 <a download href="{{ $lecture -> material }}" class="btn btn-light rounded overflow-hidden mx-2">
@@ -35,9 +38,12 @@
                 @endif
             </div>
 
+
             <div class="card-footer">
                 <a href="/groups/{{$lesson -> group -> id}}" class="btn rounded btn-dark p-3">Go Back</a>
             </div>
         </div>
     </div>
+
+
 </x-manager-layout>

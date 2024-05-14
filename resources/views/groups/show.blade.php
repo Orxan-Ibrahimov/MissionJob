@@ -1,6 +1,6 @@
 <x-manager-layout>
     <div class="col-12">
-        <div class="card p-4">
+        <div class="card p-4 my-4">
             <div class="card-header d-flex flex-column align-items-center">
                 <h1 class="text-center"> {{ $group -> name}} </h1>
             </div>
@@ -18,9 +18,9 @@
                 <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning">Edit</a>
                 @endcan
             </div>
-        </div>
-
-        <div class="card p-4">
+        </div> 
+        
+        <div class="card p-4 my-4">
             <div class="card-header">
                 <h1 class="text-left"> Lessons </h1>
             </div>
