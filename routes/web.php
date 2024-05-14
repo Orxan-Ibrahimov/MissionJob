@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\LectureContoller;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
@@ -65,3 +66,4 @@ Route::resource('roles', RoleController::class)->middleware('auth');
 Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('groups', GroupController::class);
 Route::resource('lessons', LessonController::class);
+Route::resource('lectures', LectureContoller::class);
