@@ -13,10 +13,12 @@
                     </div>
                 </h3>
             </div>
-            <div class="card-footer">
+            <div class="card-footer d-flex justify-content-between">
                 @can('edit', $group)
                 <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning"><i class="mdi mdi-table-edit" style="font-size: 2rem;"></i></a>
                 @endcan
+                <a href="/groups" class="btn rounded btn-light"> <i class="mdi mdi-keyboard-return" style="font-size: 2rem;"></i> </a>
+
             </div>
         </div> 
         

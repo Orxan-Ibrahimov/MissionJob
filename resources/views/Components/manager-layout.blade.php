@@ -80,7 +80,7 @@
                         <span class="menu-icon">
                             <i class="mdi mdi-speedometer"></i>
                         </span>
-                        <span class="menu-title">Dashboard</span>
+                        <span class="menu-title">Əsas Panel</span>
                     </a>
                 </li>
                 @if(Auth::user() -> active_role === 'administrator')
@@ -89,7 +89,7 @@
                         <span class="menu-icon">
                             <i class="mdi mdi-security"></i>
                         </span>
-                        <span class="menu-title">Roles</span>
+                        <span class="menu-title">Rollar</span>
                     </a>
                 </li>
                 <li class="nav-item menu-items">
@@ -97,7 +97,7 @@
                         <span class="menu-icon">
                             <i class="mdi mdi-account-multiple"></i>
                         </span>
-                        <span class="menu-title">Users</span>
+                        <span class="menu-title">İstifadəçilər</span>
                     </a>
                 </li>
                 @endif
@@ -106,15 +106,15 @@
                         <span class="menu-icon">
                             <i class="mdi mdi-content-paste"></i>
                         </span>
-                        <span class="menu-title">Groups</span>
+                        <span class="menu-title">Qruplar</span>
                     </a>
                 </li>
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="/lessons">
                         <span class="menu-icon">
-                            <i class="mdi mdi-content-paste"></i>
+                            <i class="mdi mdi-flask"></i>
                         </span>
-                        <span class="menu-title">Lessons</span>
+                        <span class="menu-title">Dərslər</span>
                     </a>
                 </li>
             </ul>

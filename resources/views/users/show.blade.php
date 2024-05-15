@@ -27,7 +27,7 @@
                             <option value="{{$role -> name}}" class="bg-info text-white"> {{ $role -> name }} </option>
                             @endforeach
                         </select>
-                        <button type="submit" class="btn btn-primary mx-3"> <i class="mdi mdi-content-save" style="font-size: 2rem;"></i></button>
+                        <button type="submit" class="btn btn-success mx-3"> <i class="mdi mdi-plus" style="font-size: 2rem;"></i></button>
                     </form>
                     @endif
                     <a href="/users" class="btn btn-light py-2 my-4"> <i class="mdi mdi-keyboard-return" style="font-size: 2rem;"></i></a>

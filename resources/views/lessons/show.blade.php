@@ -9,9 +9,6 @@
                 <h3 class="card-text my-4">Aid Olduğu qrup: <span class="mx-3 text-info">{{ $lesson -> group -> name }}</span></h3>
             </div>
 
-
-
-
             <div class="card-footer d-flex justify-content-between">
                 @can('edit', $lesson-> group)
                 <a href="/lessons/{{ $lesson -> id }}/edit" class="btn btn-warning"> <i class="mdi mdi-table-edit" style="font-size: 2rem;"></i> </a>
@@ -20,31 +17,27 @@
             </div>
         </div>
 
-        @if(count($lesson -> lectures) > 0)
         <div class="card p-4 my-4">
             <div class="card-header">
                 <h1 class="card-title text-center"> {{ $lesson -> name }} dərsinin mühazirələri </h1>
             </div>
 
-            <div class="card-body d-flex">
+            <div class="card-body d-flex align-items-center">
                 @can('edit', $lesson -> group)
                 <a href="/lectures/create?lesson={{$lesson -> id}}" class="btn btn-info mx-2">
                     <img src="{{URL::asset('uploads/lecture/create.png')}}" width="200" height="200" alt="create" />
                 </a>
                 @endcan
-                @if(count($lesson -> lectures))
+
+                @if(count($lesson -> lectures) > 0)
                 @foreach($lesson -> lectures as $lecture)
                 <a href="/lectures/{{ $lecture -> id }}" class="btn btn-info rounded overflow-hidden mx-2">
                     <p class="mb-0">{{ $lecture -> name }}</p>
                     <img src="{{URL::asset('uploads/lecture/pdf.png')}}" width="200" height="200" alt="pdf" />
                 </a>
                 @endforeach
-                @else
-
                 @endif
             </div>
         </div>
-        @endif
-
     </div>
 </x-manager-layout>
