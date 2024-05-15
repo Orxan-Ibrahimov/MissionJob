@@ -3,17 +3,17 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between m-2">
-                <h2 class="card-title mb-0">Roles Table</h2>
-                <a href="/roles/create" class="d-block btn btn-outline-success">Create</a>
+                <h2 class="card-title mb-0">Rollar</h2>
+                <a href="/roles/create" class="d-block btn btn-outline-success"><i class="mdi mdi-plus" style="font-size: 2rem;"></i></a>
             </div>
             <table class="table table-hover table-striped table-dark">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Guard</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Operations</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Quard</th>
+                        <th scope="col">Yaradıldı</th>
+                        <th scope="col">Əməliyyatlar</th>
                     </tr>
                 </thead>
                 <tbody>

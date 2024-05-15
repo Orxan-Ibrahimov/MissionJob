@@ -6,44 +6,45 @@
             </div>
             <div class="card-body">
                 <h3 class="card-text my-4">ID: <span class="mx-3 text-info">{{ $lesson -> id }}</span></h3>
-                <h3 class="card-text my-4">Group: <span class="mx-3 text-info">{{ $lesson -> group -> name }}</span></h3>
+                <h3 class="card-text my-4">Aid Olduğu qrup: <span class="mx-3 text-info">{{ $lesson -> group -> name }}</span></h3>
             </div>
 
-            @can('edit', $lesson-> group)
-            <div class="card-header">
-                <a href="/lessons/{{ $lesson -> id }}/edit" class="btn btn-warning">Edit</a>
+
+
+
+            <div class="card-footer d-flex justify-content-between">
+                @can('edit', $lesson-> group)
+                <a href="/lessons/{{ $lesson -> id }}/edit" class="btn btn-warning"> <i class="mdi mdi-table-edit" style="font-size: 2rem;"></i> </a>
+                @endcan
+                <a href="/groups/{{$lesson -> group -> id}}" class="btn rounded btn-light"> <i class="mdi mdi-keyboard-return" style="font-size: 2rem;"></i> </a>
             </div>
-            @endcan
         </div>
 
+        @if(count($lesson -> lectures) > 0)
         <div class="card p-4 my-4">
             <div class="card-header">
-                <h1 class="text-center"> {{ $lesson -> name }}'s Lectures </h1>
+                <h1 class="card-title text-center"> {{ $lesson -> name }} dərsinin mühazirələri </h1>
             </div>
-
 
             <div class="card-body d-flex">
                 @can('edit', $lesson -> group)
-                <a href="/lectures/create?lesson={{$lesson -> id}}" class="btn btn-light mx-2">
-                    <img src="{{URL::asset('uploads/lecture/create.png')}}" width="75" height="75" alt="create" />
+                <a href="/lectures/create?lesson={{$lesson -> id}}" class="btn btn-info mx-2">
+                    <img src="{{URL::asset('uploads/lecture/create.png')}}" width="200" height="200" alt="create" />
                 </a>
                 @endcan
                 @if(count($lesson -> lectures))
                 @foreach($lesson -> lectures as $lecture)
-                <a download href="{{ $lecture -> material }}" class="btn btn-light rounded overflow-hidden mx-2">
+                <a href="/lectures/{{ $lecture -> id }}" class="btn btn-info rounded overflow-hidden mx-2">
                     <p class="mb-0">{{ $lecture -> name }}</p>
-                    <img src="{{URL::asset('uploads/lecture/pdf.png')}}" width="75" height="75" alt="pdf" />
+                    <img src="{{URL::asset('uploads/lecture/pdf.png')}}" width="200" height="200" alt="pdf" />
                 </a>
                 @endforeach
+                @else
+
                 @endif
             </div>
-
-
-            <div class="card-footer">
-                <a href="/groups/{{$lesson -> group -> id}}" class="btn rounded btn-dark p-3">Go Back</a>
-            </div>
         </div>
+        @endif
+
     </div>
-
-
 </x-manager-layout>

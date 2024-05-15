@@ -2,9 +2,10 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center m-2">
-                <h2 class="card-title mb-0">Groups Table</h2>
+                <h1 class="card-title text-center">Qruplar cədvəli</h1>
                 @can('create',Auth::user())
-                <a href="/groups/create" class="d-block btn btn-outline-success mx-5">Create</a>
+
+                <a href="/groups/create" class="d-block btn btn-outline-success"><i class="mdi mdi-plus" style="font-size: 2rem;"></i></a>
                 @endcan
             </div>
 
@@ -12,9 +13,9 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Head Teacher</th>
-                        <th scope="col">Operations</th>
+                        <th scope="col">Qrupun adı</th>
+                        <th scope="col">Yaradıcı</th>
+                        <th scope="col">Əməliyyatlar</th>
                     </tr>
                 </thead>
                 <tbody>

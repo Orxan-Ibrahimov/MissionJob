@@ -2,16 +2,16 @@
 <x-manager-layout>
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title mb-0">Users Table</h2>
+            <h2 class="card-title mb-0">İstifadəçilər cədvəli</h2>
             <table class="table table-hover table-striped table-dark">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surname</th>
-                        <th scope="col">Active Role</th>
-                        <th scope="col">Register ID</th>
-                        <th scope="col">Operations</th>
+                        <th scope="col">Ad</th>
+                        <th scope="col">Soyad</th>
+                        <th scope="col">Aktiv rol</th>
+                        <th scope="col">FİN</th>
+                        <th scope="col">Əməliyyatlar</th>
                     </tr>
                 </thead>
                 <tbody>

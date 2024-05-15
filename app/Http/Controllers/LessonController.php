@@ -26,7 +26,7 @@ class LessonController extends Controller
         $group = Group::find($request['group']);
         $response = Gate::inspect('edit', $group);
         if (!$response->allowed()) abort(403, $response->message());
-        
+
         return view('lessons.create', ['group_id' => $request['group']]);
     }
 
@@ -42,6 +42,23 @@ class LessonController extends Controller
             'name' => request('name'),
             'group_id' => request('group_id')
         ]);
-        return redirect('groups/' . $lesson->group -> id);
+        return redirect('groups/' . $lesson->group->id);
+    }
+
+    public function edit(Lesson $lesson)
+    {
+        $response = Gate::inspect('edit', $lesson->group);
+        if (!$response->allowed()) abort(403, $response->message());
+
+        return view('lessons.edit', ['lesson' => $lesson]);
+    }
+
+    public function update(Lesson $lesson)
+    {
+        $valid_lesson = request()->validate([
+            'name' => ['required']
+        ]);
+        $lesson->update($valid_lesson);
+        return view('lessons.show', ['lesson' => $lesson]);
     }
 }

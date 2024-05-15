@@ -1,3 +1,3 @@
-<h1>Thanks! You are already signed!</h1>
+<h1>Qeydiyyatdan keçdiyinizə təşəkkür edirik!</h1>
 
-<a href="{{ url('/') }}">Login</a>
+<a href="{{ url('/') }}">Hesaba daxil olun</a>

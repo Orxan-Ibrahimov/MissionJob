@@ -8,12 +8,12 @@
             </div>
             <div class="card-body">
                 <h3 class="card-text my-4">ID: <span class="mx-3 text-info">{{ $user -> id }}</span></h3>
-                <h3 class="card-text my-4">Email: <span class="mx-3 text-warning">{{ $user -> email}}</span></h3>
-                <h3 class="card-text my-4">Register ID: <span class="mx-3 p-2 rounded bg-primary text-warning">{{ $user -> register_id}}</span></h3>
-                <h3 class="card-text my-4">Active Role: <span class="mx-3 text-primary">{{ $user -> active_role}}</span></h3>
-                <h3 class="card-text my-4">Created At: <span class="mx-3 text-success">{{ $user -> created_at}}</span></h3>
-                <h3 class="card-text my-4">Email Verified At: <span class="mx-3 p-2 rounded bg-danger text-warning">{{ $user -> email_verified_at}}</span></h3>
-                <h3 class="card-text my-4">Updated At: <span class="mx-3 text-danger">{{ $user -> updated_at? $user -> updated_at : 'Not updated'}}</span></h3>
+                <h3 class="card-text my-4">Email ünvan: <span class="mx-3 text-warning">{{ $user -> email}}</span></h3>
+                <h3 class="card-text my-4">FİN: <span class="mx-3 p-2 rounded bg-primary text-warning">{{ $user -> register_id}}</span></h3>
+                <h3 class="card-text my-4">Aktiv rol: <span class="mx-3 text-primary">{{ $user -> active_role}}</span></h3>
+                <h3 class="card-text my-4">Əlavə edildi: <span class="mx-3 text-success">{{ $user -> created_at}}</span></h3>
+                <h3 class="card-text my-4">Email təsdiq edildi: <span class="mx-3 p-2 rounded bg-danger text-warning">{{ $user -> email_verified_at}}</span></h3>
+                <h3 class="card-text my-4">Redaktə edildi: <span class="mx-3 text-danger">{{ $user -> updated_at? $user -> updated_at : 'Not updated'}}</span></h3>
                 
 
                 <div class="d-flex justify-content-between align-items-center">
@@ -22,15 +22,15 @@
                         @csrf
                         <input type="hidden" name="user" value="{{$user -> id}}" />
                         <select name="role" class="form-control bg-info text-white text-left w-auto rounded-pill">
-                            <option value="" class="bg-info text-white"> Choose </option>
+                            <option value="" class="bg-info text-white"> Seçin </option>
                             @foreach($rest_roles as $role)
                             <option value="{{$role -> name}}" class="bg-info text-white"> {{ $role -> name }} </option>
                             @endforeach
                         </select>
-                        <button type="submit" class="btn btn-outline-info py-2 mx-4"> Add Role</button>
+                        <button type="submit" class="btn btn-primary mx-3"> <i class="mdi mdi-content-save" style="font-size: 2rem;"></i></button>
                     </form>
                     @endif
-                    <a href="/users" class="btn btn-light py-2 my-4"> <i class="mdi mdi-keyboard-return"></i></a>
+                    <a href="/users" class="btn btn-light py-2 my-4"> <i class="mdi mdi-keyboard-return" style="font-size: 2rem;"></i></a>
                 </div>
                 @error('role')
                 <p class="text-danger">{{$message}}</p>
@@ -40,7 +40,7 @@
 
         <div class="card p-4 my-4">
             
-        <h3 class="card-text text-center my-4">About You:</h3>
+        <h3 class="card-text text-center my-4">Bioqrafiya</h3>
                 <div>
                     {!! html_entity_decode($user -> about_you) !!}
                 </div>
@@ -50,7 +50,7 @@
     @if($user -> active_role != 'administrator')
     <div class="col-4">
         <div class="card p-4">
-            <h1 class="text-center"> {{ $user -> first_name}}'s Roles </h1>
+            <h1 class="text-center"> {{ $user -> first_name}} şəxsin rolları </h1>
             <div class="card-body">
                 @foreach($user -> roles as $role)
                 @if($role -> name === 'student' || Auth::user() -> id === $user -> id)

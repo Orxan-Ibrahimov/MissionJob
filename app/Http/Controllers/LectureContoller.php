@@ -11,10 +11,6 @@ class LectureContoller extends Controller
 {
     public function create(Request $request)
     {
-        // dd($request['lesson']);
-        // $group = Group::find($request['group']);
-        // $response = Gate::inspect('edit', $group);
-        // if (!$response->allowed()) abort(403, $response->message());
         return view('lectures.create', ['lesson_id' => $request['lesson']]);
     }
 
@@ -38,11 +34,23 @@ class LectureContoller extends Controller
         $material = Paths::filePaths([request()->getSchemeAndHttpHost()], [Paths::filePaths([$uploads], [$rand . '-' . $material_name])[0]])[0];
 
 
-        $lecture = Lecture::create([
+        Lecture::create([
             'name' => request('name'),
             'lesson_id' => request('lesson_id'),
             'material' => $material
         ]);
         return redirect('lessons/' . $valid_lecture['lesson_id']);
+    }
+
+    public function show(Lecture $lecture)
+    {
+        return view("lectures.show", ['lecture' => $lecture]);
+    }
+
+    public function destroy(Lecture $lecture)
+    {
+        // dd($lecture);
+        $lecture->delete($lecture);
+        return redirect("lessons/" . $lecture->lesson->id);
     }
 }
