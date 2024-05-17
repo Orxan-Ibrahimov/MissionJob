@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Group;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +19,8 @@ return new class extends Migration
             $table->string('last_name');  
             $table->string('profile');
             $table->string('phone') -> nullable();
-            $table->string('gender');         
+            $table->string('gender');        
+            $table->foreignIdFor(Group::class) -> nullable(); 
             $table->longText('about_you') -> nullable();         
             $table->string('active_role')-> default('student');
             $table->string('email')->unique();           

@@ -12,6 +12,14 @@
                         <span class="text-success mx-1">{{ $group -> head_teacher -> first_name.' '.$group -> head_teacher -> last_name}}</span>
                     </div>
                 </h3>
+                <h3 class="card-text my-4">Üzvlər:
+                   @foreach($group -> members as $member)
+                   <div class="d-inline-block mx-2">
+                        <img src="{{$member -> profile}}" width="30" height="30" class="rounded-circle" alt="profile" />
+                        <span class="text-success mx-1">{{ $member -> first_name.' '.$member -> last_name}}</span>
+                    </div>
+                   @endforeach
+                </h3>
             </div>
             <div class="card-footer d-flex justify-content-between">
                 @can('edit', $group)

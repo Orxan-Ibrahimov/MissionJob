@@ -24,12 +24,26 @@ class GroupController extends Controller
      */
     public function create(Request $request)
     {
+        $currentUser =  Auth::user();
 
-        $response = Gate::inspect('create', Auth::user());
+        $response = Gate::inspect('create', $currentUser);
         if (!$response->allowed()) abort(403, $response->message());
 
         $perspective = Perspective::find($request['perspective']);
-        return view('groups.create', ['perspective' => $perspective]);
+        $users = User::get()->except($currentUser->id);
+        $users = [
+            'teachers' =>  $users->filter(
+                fn ($user) => !$user->hasRole(['administrator', 'manager', 'supervisor', 'head-teacher']) && $user->hasRole('teacher')
+            ),
+            'mentors' =>   $users->filter(
+                fn ($user) => !$user->hasRole(['administrator', 'manager', 'supervisor', 'head-teacher', 'teacher']) && $user->hasRole('mentor')
+            ),
+            'students' =>  $users->filter(
+                fn ($user) => !$user->hasRole(['administrator', 'manager', 'supervisor', 'head-teacher', 'teacher', 'mentor']) && $user->hasRole('student')
+            ),
+        ];
+
+        return view('groups.create', ['perspective' => $perspective, 'members' => $users]);
     }
 
     /**
@@ -37,16 +51,23 @@ class GroupController extends Controller
      */
     public function store()
     {
-
         request()->validate([
             'name' => ['required']
         ]);
+
+
 
         $group = Group::create([
             'name' => request('name'),
             'head_teacher_id' => Auth::user()->id,
             'perspective_id' => request('perspective')
         ]);
+        $users = User::get();
+        foreach (request('members') as $member) {
+            $user = $users->find($member);
+            $user->group_id = $group->id;
+            $user->save();
+        }
 
         return redirect('groups/' . $group->id);
     }

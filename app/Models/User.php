@@ -32,8 +32,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function groups(){
-        return $this -> hasMany(Group::class);
+    public function group(){
+        return $this -> belongsTo(Group::class);
     }
 
     /**
