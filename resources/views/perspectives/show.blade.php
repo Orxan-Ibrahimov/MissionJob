@@ -13,12 +13,14 @@
                     </div>
                 </h3>
             </div>
-            <div class="card-footer d-flex justify-content-between">             
-                <a href="/perspectives/{{ $perspective -> id }}/edit" class="btn btn-warning"><i class="mdi mdi-table-edit" style="font-size: 2rem;"></i></a>              
+            <div class="card-footer d-flex justify-content-between">
+                @can('edit', $perspective)
+                <a href="/perspectives/{{ $perspective -> id }}/edit" class="btn btn-warning"><i class="mdi mdi-table-edit" style="font-size: 2rem;"></i></a>
+                @endcan
                 <a href="/perspectives" class="btn rounded btn-light"> <i class="mdi mdi-keyboard-return" style="font-size: 2rem;"></i> </a>
             </div>
-        </div> 
-        
+        </div>
+
         <div class="card p-4 my-4">
             <div class="card-header">
                 <h1 class="text-left"> Qruplar </h1>
@@ -28,7 +30,7 @@
                 <a href="/groups/{{$group -> id}}" class="btn btn-info p-4">{{ $group -> name}}</a>
                 @endforeach
             </div>
-            <div class="card-footer">               
+            <div class="card-footer">
                 @can('create', Auth::user())
                 <a href="/groups/create?perspective={{  $perspective -> id }}" class="btn btn-success"> <i class="mdi mdi-folder-plus" style="font-size: 2rem;"></i></a>
                 @endcan

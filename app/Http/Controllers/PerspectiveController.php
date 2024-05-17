@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Perspective;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PerspectiveController extends Controller
 {
@@ -21,6 +22,9 @@ class PerspectiveController extends Controller
 
     public function create()
     {
+        $response = Gate::inspect('create', Auth::user());
+        if (!$response->allowed()) abort(403, $response->message());
+
         return view('perspectives.create');
     }
 
@@ -39,6 +43,9 @@ class PerspectiveController extends Controller
 
     public function edit(Perspective $perspective)
     {
+        $response = Gate::inspect('edit', $perspective);
+        if (!$response->allowed()) abort(403, $response->message());
+
         return view('perspectives.edit', ['perspective' => $perspective]);
     }
 

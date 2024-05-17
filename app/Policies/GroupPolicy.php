@@ -8,8 +8,8 @@ use Illuminate\Auth\Access\Response;
 
 class GroupPolicy
 {
-    public function create(User $user): Response
-    {
+    public function create(string $role,User $user): Response
+    {       
         return $user->active_role === 'head-teacher'
             ? Response::allow()
             : Response::deny("Sorry! You can't create a group.");

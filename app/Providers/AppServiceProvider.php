@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\Group;
 use App\Models\Lesson;
+use App\Models\Perspective;
 use App\Models\User;
 use App\Policies\GroupPolicy;
 use App\Policies\LessonPolicy;
+use App\Policies\PerspectivePolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +29,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::policy(User::class,GroupPolicy::class);
         Gate::policy(Group::class, GroupPolicy::class);
-        // Gate::policy(Group::class, LessonPolicy::class);
-        Gate::policy(Lesson::class, LessonPolicy::class);
+        Gate::policy(Perspective::class, PerspectivePolicy::class);
+        Gate::policy(User::class, PerspectivePolicy::class);
+        // Gate::policy(Lesson::class, LessonPolicy::class);
     }
 }
