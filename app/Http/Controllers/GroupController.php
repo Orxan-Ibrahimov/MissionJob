@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+use function PHPUnit\Framework\isNull;
+
 class GroupController extends Controller
 {
     /**
@@ -30,7 +32,7 @@ class GroupController extends Controller
         if (!$response->allowed()) abort(403, $response->message());
 
         $perspective = Perspective::find($request['perspective']);
-        $users = User::get()->except($currentUser->id);
+        $users = User::get()->except($currentUser->id)-> where('group_id', null);
         $users = [
             'teachers' =>  $users->filter(
                 fn ($user) => !$user->hasRole(['administrator', 'manager', 'supervisor', 'head-teacher']) && $user->hasRole('teacher')
