@@ -90,8 +90,11 @@ class UserController extends Controller
                 $image->removeAttribute('src');
                 $image_name = str_replace(public_path(), request()->getSchemeAndHttpHost(), $image_name);
                 $image_name = str_replace('\\', '/', $image_name);
-            } else
+            } else if (count(explode('../../', $image->getAttribute('src'))) > 1)
                 $image_name = request()->getSchemeAndHttpHost() . '/' . explode('../../', $image->getAttribute('src'))[1];
+            else
+                $image_name = explode('../../', $image->getAttribute('src'))[0];
+
             $image->setAttribute('src', $image_name);
         }
         $description = $dom->saveHTML();
