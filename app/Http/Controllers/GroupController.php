@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\Perspective;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,14 @@ class GroupController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+
         $response = Gate::inspect('create', Auth::user());
         if (!$response->allowed()) abort(403, $response->message());
 
-        return view('groups.create');
+        $perspective = Perspective::find($request['perspective']);
+        return view('groups.create', ['perspective' => $perspective]);
     }
 
     /**
@@ -34,17 +37,18 @@ class GroupController extends Controller
      */
     public function store()
     {
+
         request()->validate([
             'name' => ['required']
         ]);
 
-        Group::create([
+        $group = Group::create([
             'name' => request('name'),
-            'head_teacher_id' => Auth::user()->id
+            'head_teacher_id' => Auth::user()->id,
+            'perspective_id' => request('perspective')
         ]);
 
-
-        return redirect('groups');
+        return redirect('groups/' . $group->id);
     }
 
     /**

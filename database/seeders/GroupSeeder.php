@@ -14,13 +14,15 @@ class GroupSeeder extends Seeder
     public function run(): void
     {
         Group::create([
-            'name' => 'Test Group',
-            'head_teacher_id' => 3
+            'name' => 'Back 1',
+            'head_teacher_id' => 3,
+            'perspective_id' => 1
         ]);
 
         Group::create([
-            'name' => 'Arrogant Group',
-            'head_teacher_id' => 4
+            'name' => 'Front 12',
+            'head_teacher_id' => 4,
+            'perspective_id' => 2
         ]);
     }
 }

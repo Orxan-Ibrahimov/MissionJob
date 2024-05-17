@@ -2,10 +2,7 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center m-2">
-                <h1 class="card-title text-center">Qruplar cədvəli</h1>
-                @can('create',Auth::user())
-                <a href="/groups/create" class="d-block btn btn-outline-success"><i class="mdi mdi-plus" style="font-size: 2rem;"></i></a>
-                @endcan
+                <h1 class="card-title text-center">Qruplar cədvəli</h1>              
             </div>
 
             <table class="table table-hover table-striped table-dark">

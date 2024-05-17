@@ -3,6 +3,7 @@
         <div class="card-body">
             <h1 class="card-title text-center">Bir qrup əlavə edin</h1>
             <form method="post" action="/groups" class="forms-sample">
+                <input type="hidden" name="perspective" value="{{ $perspective -> id }}" />
                 @csrf
                 <div class="form-group">
                     <label for="name">Qrup adı</label>

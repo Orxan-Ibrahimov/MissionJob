@@ -102,6 +102,14 @@
                 </li>
                 @endif
                 <li class="nav-item menu-items">
+                    <a class="nav-link" href="/perspectives">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-account-multiple"></i>
+                        </span>
+                        <span class="menu-title">Təlim modulları</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
                     <a class="nav-link" href="/groups">
                         <span class="menu-icon">
                             <i class="mdi mdi-content-paste"></i>

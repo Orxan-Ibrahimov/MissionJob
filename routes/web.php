@@ -3,6 +3,8 @@
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LectureContoller;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\PerspectiveController;
+use App\Http\Controllers\PersperctiveController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SessionController;
@@ -64,6 +66,7 @@ Route::delete('/logout', [SessionController::class, 'destroy']);
 
 Route::resource('roles', RoleController::class)->middleware('auth');
 Route::resource('users', UserController::class)->middleware('auth');
-Route::resource('groups', GroupController::class);
-Route::resource('lessons', LessonController::class);
-Route::resource('lectures', LectureContoller::class);
+Route::resource('groups', GroupController::class)->middleware('auth');
+Route::resource('lessons', LessonController::class)->middleware('auth');
+Route::resource('lectures', LectureContoller::class)->middleware('auth');
+Route::resource('perspectives', PerspectiveController::class)->middleware('auth');

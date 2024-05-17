@@ -15,6 +15,10 @@ class Group extends Model
         return $this-> belongsTo(User::class);
     }
 
+    public function perspectıve(){
+        return $this-> belongsTo(Perspective::class);
+    }
+
     public function lessons(){
         return $this->hasMany(Lesson::class);
     }

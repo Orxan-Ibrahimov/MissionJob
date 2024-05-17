@@ -98,6 +98,6 @@ class UserController extends Controller
         $valid_user['about_you'] = $description;
 
         $user->update($valid_user);
-        return redirect('users');
+        return redirect('perspectives');
     }
 }

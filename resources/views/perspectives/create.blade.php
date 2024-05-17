@@ -1,12 +1,12 @@
 <x-manager-layout>
     <div class="card">
         <div class="card-body">
-            <h1 class="card-title text-center">Rol Əlavə et</h1>
-            <form method="post" action="/roles" class="forms-sample">
+            <h1 class="card-title text-center">Təlim modulu əlavə et</h1>
+            <form method="post" action="/perspectives" class="forms-sample">
                 @csrf
                 <div class="form-group my-4">
-                    <label for="role">Rol</label>
-                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror my-2 w-auto" id="role" placeholder="Rolu daxil edin...">
+                    <label for="perspective">Ad</label>
+                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror my-2 w-auto" id="perspective" placeholder="Təlim modulu daxil edin...">
                     @error('name')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
