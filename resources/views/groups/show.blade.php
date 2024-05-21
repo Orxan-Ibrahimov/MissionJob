@@ -13,23 +13,26 @@
                     </div>
                 </h3>
                 <h3 class="card-text my-4">Üzvlər:
-                   @foreach($group -> members as $member)
-                   <div class="d-inline-block mx-2">
+                    @foreach($group -> members as $member)
+                    <div class="d-inline-block mx-2">
                         <img src="{{$member -> profile}}" width="30" height="30" class="rounded-circle" alt="profile" />
                         <span class="text-success mx-1">{{ $member -> first_name.' '.$member -> last_name}}</span>
                     </div>
-                   @endforeach
+                    @endforeach
                 </h3>
             </div>
             <div class="card-footer d-flex justify-content-between">
                 @can('edit', $group)
-                <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning"><i class="mdi mdi-table-edit" style="font-size: 2rem;"></i></a>
+                <div>
+                    <a href="/groups/{{ $group -> id }}/edit" class="btn btn-warning"><i class="mdi mdi-table-edit" style="font-size: 2rem;"></i></a>
+                    <a href="/attendances/{{ $group -> id }}" class="btn btn-primary"><i class="mdi mdi-calendar" style="font-size: 2rem;"></i></a>
+                </div>
                 @endcan
                 <a href="/groups" class="btn rounded btn-light"> <i class="mdi mdi-keyboard-return" style="font-size: 2rem;"></i> </a>
 
             </div>
-        </div> 
-        
+        </div>
+
         <div class="card p-4 my-4">
             <div class="card-header">
                 <h1 class="text-left"> Dərslər </h1>
@@ -40,7 +43,6 @@
                 @endforeach
             </div>
             <div class="card-footer">
-               
                 @can('edit', $group)
                 <a href="/lessons/create?group={{  $group -> id }}" class="btn btn-success"> <i class="mdi mdi-folder-plus" style="font-size: 2rem;"></i></a>
                 @endcan

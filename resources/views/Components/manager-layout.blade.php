@@ -361,11 +361,7 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-12 grid-margin stretch-card">
-                            {{ $slot }}
-                        </div>
-                    </div>
+                {{ $slot }}
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->

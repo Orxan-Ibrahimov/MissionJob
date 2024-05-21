@@ -36,6 +36,10 @@ class User extends Authenticatable
         return $this -> belongsTo(Group::class);
     }
 
+    public function attendances(){
+        return $this -> hasMany(StudentAttendance::class)->orderBy('date');
+    }
+
     /**
      * The attributes that should be cast.
      *

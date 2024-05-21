@@ -90,6 +90,18 @@ class UserSeeder extends Seeder
         ])->assignRole('student');
 
         User::create([
+            'first_name' => 'Lebron',
+            'last_name' => 'James',
+            'gender' => 'man',
+            'register_id' => rand(100000, 999999),
+            'email' => 'lebron@gmail.com',
+            'profile' => 'http://127.0.0.1:8000\uploads\image\avatar\avatar_a_m.jpg',
+            'email_verified_at' => now(),
+            'updated_at' => null,
+            'password' => Hash::make('lebron123'),
+        ])->assignRole('student');
+
+        User::create([
             'first_name' => 'Clark',
             'last_name' => 'Kent',
             'gender' => 'man',
