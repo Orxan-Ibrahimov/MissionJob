@@ -9,6 +9,7 @@
     @vite(
     'resources/css/style.css'
     );
+     
     <!-- End layout styles -->
 </head>
 

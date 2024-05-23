@@ -1,12 +1,12 @@
 <x-manager-layout>
     <div class="card">
         <div class="card-body">
-            <h1 class="card-title text-center">Tapsırıq növü əlavə et</h1>
+            <h1 class="card-title text-center">Tapşırıq növü əlavə et</h1>
             <form method="post" action="/tasktypes" class="forms-sample row">
                 @csrf
                 <div class="form-group col-6 my-4">
-                    <label for="type">Tapsırıq növü</label>
-                    <input type="text" name="type" class="form-control rounded-pill @error('type') is-invalid @enderror my-2" id="type" placeholder="Tapsırıq növünü daxil edin...">
+                    <label for="type">Tapşırıq növü</label>
+                    <input type="text" name="type" class="form-control rounded-pill @error('type') is-invalid @enderror my-2" id="type" placeholder="Tapşırıq növünü daxil edin...">
                     @error('type')
                     <p class="text-danger">{{$message}}</p>
                     @enderror

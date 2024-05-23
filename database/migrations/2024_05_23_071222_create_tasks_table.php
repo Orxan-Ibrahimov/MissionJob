@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Group;
+use App\Models\Lesson;
 use App\Models\TaskType;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->bigInteger('task_type_id')->foreignIdFor(TaskType::class)->constrained()->cascadeOnUpdate();
             $table->bigInteger('group_id')->foreignIdFor(Group::class)->constrained()->cascadeOnUpdate();
+            $table->bigInteger('lesson_id')->foreignIdFor(Lesson::class)->constrained()->cascadeOnUpdate();
             $table->date('deadline');
             $table->string('request');
             $table->string('response')->nullable();

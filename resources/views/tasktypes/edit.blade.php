@@ -1,13 +1,13 @@
 <x-manager-layout>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Tapsırıq növünü redaktə et: {{ $tasktype -> type }}</h4>
+            <h4 class="card-title">Tapşırıq növünü redaktə et: {{ $tasktype -> type }}</h4>
             <form method="post" action="/tasktypes/{{$tasktype -> id}}" class="forms-sample row">
                 @csrf
                 @method('PATCH')
                 <div class="form-group col-6 my-4">
-                    <label for="type">Tapsırıq növü</label>
-                    <input type="text" name="type" class="form-control rounded-pill @error('type') is-invalid @enderror my-2" id="type" placeholder="Tapsırıq növünü daxil edin...">
+                    <label for="type">Tapşırıq növü</label>
+                    <input type="text" name="type" class="form-control rounded-pill @error('type') is-invalid @enderror my-2" id="type" placeholder="Tapşırıq növünü daxil edin...">
                     @error('type')
                     <p class="text-danger">{{$message}}</p>
                     @enderror

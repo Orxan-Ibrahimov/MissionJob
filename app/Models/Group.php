@@ -38,5 +38,10 @@ class Group extends Model
     {
         return $this->hasMany(StudentAttendance::class);
     }  
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }  
     
 }

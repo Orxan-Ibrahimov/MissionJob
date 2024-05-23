@@ -39,5 +39,28 @@
                 @endif
             </div>
         </div>
+
+        <div class="card p-4 my-4">
+            <div class="card-header">
+                <h1 class="card-title text-center"> {{ $lesson -> name }} dərsinə aid tapşırıqlar </h1>
+            </div>
+
+            <div class="card-body d-flex align-items-center">
+                @can('edit', $lesson -> group)
+                <a href="/tasks/create?lesson={{$lesson -> id}}" class="btn btn-info mx-2">
+                    <img src="{{URL::asset('uploads/lecture/create.png')}}" width="200" height="200" alt="create" />
+                </a>
+                @endcan
+
+                @if(count($lesson -> tasks) > 0)
+                @foreach($lesson -> tasks as $task)
+                <a href="/tasks/{{ $task -> id }}" class="btn btn-info rounded overflow-hidden mx-2">
+                    <p class="mb-0">{{ $task -> title }}</p>
+                    <img src="{{URL::asset('uploads/lecture/pdf.png')}}" width="200" height="200" alt="pdf" />
+                </a>
+                @endforeach
+                @endif
+            </div>
+        </div>
     </div>
 </x-manager-layout>

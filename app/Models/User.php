@@ -40,6 +40,10 @@ class User extends Authenticatable
         return $this -> hasMany(StudentAttendance::class)->orderBy('date');
     }
 
+    // public function tasks(){
+    //     return $this -> hasMany(Task::class);
+    // }
+
     /**
      * The attributes that should be cast.
      *
