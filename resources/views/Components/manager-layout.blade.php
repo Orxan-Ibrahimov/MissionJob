@@ -100,6 +100,14 @@
                         <span class="menu-title">İstifadəçilər</span>
                     </a>
                 </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" href="/tasktypes">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-library-books"></i>
+                        </span>
+                        <span class="menu-title">Tapşırıq növləri</span>
+                    </a>
+                </li>
                 @endif
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="/perspectives">
@@ -112,7 +120,7 @@
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="/groups">
                         <span class="menu-icon">
-                            <i class="mdi mdi-content-paste"></i>
+                            <i class="mdi mdi-group"></i>
                         </span>
                         <span class="menu-title">Qruplar</span>
                     </a>
@@ -361,7 +369,7 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                {{ $slot }}
+                    {{ $slot }}
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
